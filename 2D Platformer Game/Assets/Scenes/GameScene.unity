@@ -1969,7 +1969,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &786298652
@@ -2282,6 +2282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 065374202b3e6c64ebd8cb6b1dadbac8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ScoreLabel: {fileID: 1868909229}
 --- !u!1 &869422542
 GameObject:
   m_ObjectHideFlags: 0

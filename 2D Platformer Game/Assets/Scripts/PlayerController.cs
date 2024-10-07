@@ -13,13 +13,17 @@ public class PlayerController : MonoBehaviour
     public float JumpSpeed = 12;
     public float BoostedJumpSpeed = 14; // 윗방향 키 같이 눌렀을 때, 점프 증가
 
-    public float WallSlideSpeed = 2;
-    public float WallJumpSpeed = 10;
-
     public Collider2D BottomCollider;
     public CompositeCollider2D TerrainCollider;
+
+    public GameObject BulletPrefab;
+
+    //---------벽 점프,슬라이더-----------
+    public float WallSlideSpeed = 2;
+    public float WallJumpSpeed = 10;
     public Collider2D LeftWallCollider;
     public Collider2D RightWallCollider;
+    //------------------------------------
 
     // 멤버 변수
     float vx = 0;
@@ -166,7 +170,21 @@ public class PlayerController : MonoBehaviour
         preVx = vx;             // 이전 속도
 
         GetComponent<Rigidbody2D>().linearVelocity = new Vector2(vx, vy);
+
+        if(Input.GetButtonDown("Fire1"))
+        {
+            Vector2 bulletV = new Vector2(10, 0);
+
+            if(GetComponent<SpriteRenderer>().flipX)
+            {
+                bulletV.x = -bulletV.x;
+            }
+            GameObject bullet = Instantiate(BulletPrefab);
+            bullet.transform.position = transform.position;
+            bullet.GetComponent<Bullet>().Velocity = bulletV;
+        }
     }
+
     void StopWallJump()
     {
         wallJumping = false;

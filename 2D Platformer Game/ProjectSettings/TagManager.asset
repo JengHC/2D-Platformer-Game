@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Terrain
   - Enemy
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -54,6 +55,9 @@ TagManager:
     locked: 0
   - name: Character
     uniqueID: 4288653303
+    locked: 0
+  - name: Effect
+    uniqueID: 4119023263
     locked: 0
   m_RenderingLayers:
   - Default

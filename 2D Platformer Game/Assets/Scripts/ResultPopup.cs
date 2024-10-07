@@ -58,7 +58,7 @@ public class ResultPopup : MonoBehaviour
         }
 
         string currentScoreString = score.ToString("#.###");
-        string savedScoreString = PlayerPrefs.GetString("HighScores", "");
+        string savedScoreString = PlayerPrefs.GetString("HighScores", ""); // ∫Û String¿ª πﬁ¿Ω
 
 
         if(savedScoreString=="")
