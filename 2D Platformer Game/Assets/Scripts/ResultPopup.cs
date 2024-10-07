@@ -10,6 +10,9 @@ public class ResultPopup : MonoBehaviour
     private TMP_Text scroreLabel;
     [SerializeField]
     GameObject highScoreObject;
+    [SerializeField]
+    GameObject highscorePopup;
+
 
     private void OnEnable()
     {
@@ -60,5 +63,10 @@ public class ResultPopup : MonoBehaviour
     {
         Time.timeScale = 1;
         Application.Quit();
+    }
+
+    public void ShowHighScorePressed()
+    {
+        highscorePopup.SetActive(true);
     }
 }
