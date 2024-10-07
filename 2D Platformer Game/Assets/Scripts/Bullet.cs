@@ -15,5 +15,12 @@ public class Bullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        else if(collision.gameObject.tag=="Enemy")
+        {
+            Debug.Log("Enemy Shoot");
+
+            Destroy(gameObject);
+            collision.GetComponent<EnemyController>().Hit(1);
+        }
     }
 }
