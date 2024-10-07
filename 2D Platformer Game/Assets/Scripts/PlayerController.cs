@@ -67,8 +67,8 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetButtonDown("Jump"))
             {
-                wallJumping = true; // 벽 점프 중
-                vy = JumpSpeed; // 점프시 세로 속도 설정
+                wallJumping = true;     // 벽 점프 중
+                vy = JumpSpeed;         // 점프시 세로 속도 설정
 
                 // 벽에서 반대 방향으로 점프
                 if (LeftWallCollider.IsTouching(TerrainCollider))
@@ -110,13 +110,11 @@ public class PlayerController : MonoBehaviour
             if (!grounded)          // 지금은 땅에 붙었는데, 아까는 안붙어있었음
             {
                 if (vx == 0)           // 가로방향으로 멈춘 상태에서 착지
-                {
-                    Debug.Log("Idle 트리거 실행");
+                {                 
                     GetComponent<Animator>().SetTrigger("Idle");
                 }
                 else                // 가로방향으로 이동하면서 착지
                 {
-                    Debug.Log("Run 트리거 실행");
                     GetComponent<Animator>().SetTrigger("Run");
                 }
             }
