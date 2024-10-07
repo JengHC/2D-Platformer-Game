@@ -58,35 +58,35 @@ public class PlayerController : MonoBehaviour
         float vy = GetComponent<Rigidbody2D>().linearVelocityY;
 
         //캐릭터 왼쪽,오른쪽 벽 확인
-        onWall = LeftWallCollider.IsTouching(TerrainCollider) || RightWallCollider.IsTouching(TerrainCollider);
+        //onWall = LeftWallCollider.IsTouching(TerrainCollider) || RightWallCollider.IsTouching(TerrainCollider);
 
-        if (onWall && !grounded && vx != 0)
-        {
-            // 벽에 붙어 있을 때 중력 효과 약화 (미끄러짐)
-            vy = Mathf.Max(vy, -WallSlideSpeed);
+        //if (onWall && !grounded && vx != 0)
+        //{
+        //    // 벽에 붙어 있을 때 중력 효과 약화 (미끄러짐)
+        //    vy = Mathf.Max(vy, -WallSlideSpeed);
 
-            if (Input.GetButtonDown("Jump"))
-            {
-                wallJumping = true; // 벽 점프 중
-                vy = JumpSpeed; // 점프시 세로 속도 설정
+        //    if (Input.GetButtonDown("Jump"))
+        //    {
+        //        wallJumping = true; // 벽 점프 중
+        //        vy = JumpSpeed; // 점프시 세로 속도 설정
 
-                // 벽에서 반대 방향으로 점프
-                if (LeftWallCollider.IsTouching(TerrainCollider))
-                {
-                    vx = WallJumpSpeed; // 오른쪽으로 점프
-                }
-                else if (RightWallCollider.IsTouching(TerrainCollider))
-                {
-                    vx = -WallJumpSpeed; // 왼쪽으로 점프
-                }
-            }
-        }
-        // 벽 점프 후 일정 시간 동안 벽에 다시 붙지 않도록 설정
-        if (wallJumping)
-        {
-            // 일정 시간 후 다시 벽에 붙을 수 있게끔 설정
-            Invoke("StopWallJump", 0.3f);
-        }
+        //        // 벽에서 반대 방향으로 점프
+        //        if (LeftWallCollider.IsTouching(TerrainCollider))
+        //        {
+        //            vx = WallJumpSpeed; // 오른쪽으로 점프
+        //        }
+        //        else if (RightWallCollider.IsTouching(TerrainCollider))
+        //        {
+        //            vx = -WallJumpSpeed; // 왼쪽으로 점프
+        //        }
+        //    }
+        //}
+        //// 벽 점프 후 일정 시간 동안 벽에 다시 붙지 않도록 설정
+        //if (wallJumping)
+        //{
+        //    // 일정 시간 후 다시 벽에 붙을 수 있게끔 설정
+        //    Invoke("StopWallJump", 0.3f);
+        //}
 
 
         if (vx < 0)
@@ -103,8 +103,8 @@ public class PlayerController : MonoBehaviour
         if (BottomCollider.IsTouching(TerrainCollider)) // 지금 바닥에 붙어있었습니다.
         {
             //****************
-            grounded = true;
-            wallJumping = false;
+            //grounded = true;
+            //wallJumping = false;
             //***************
 
             if (!grounded)          // 지금은 땅에 붙었는데, 아까는 안붙어있었음
@@ -135,7 +135,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            grounded = false;
+            //grounded = false;
             if (grounded)            // 지금은 땅에 안붙어있지만, 아까는 붙어있었음.
             {
                 GetComponent<Animator>().SetTrigger("Jump");
