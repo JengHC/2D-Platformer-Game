@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     // ¸â¹ö º¯¼ö
     float vx = 0;
     bool grounded;
-    float preVx = 0;
+    //float preVx = 0;
     bool onWall;
     bool wallJumping;
 

@@ -109,6 +109,8 @@ public class ResultPopup : MonoBehaviour
     {
         Time.timeScale = 1;
         Application.Quit();
+        // PlayerPrefs에 저장된 스코어들을 Quit버튼 누르면 삭제
+        PlayerPrefs.DeleteAll();
     }
 
     public void ShowHighScorePressed()
