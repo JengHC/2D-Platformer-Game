@@ -15,7 +15,9 @@ public class Bullet : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.Translate(Velocity * Time.fixedDeltaTime);
+        GetComponent<Rigidbody2D>().MovePosition(
+            GetComponent<Rigidbody2D>().position + Velocity * Time.fixedDeltaTime);
+        // transform.Translate(Velocity * Time.fixedDeltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -102,6 +102,8 @@ public class PlayerController : MonoBehaviour
             GetComponent<SpriteRenderer>().flipX = false;
         }
 
+
+
         // 애니메이션 처리
         if (grounded)  // 땅에 닿아있을 때
         {
@@ -147,13 +149,13 @@ public class PlayerController : MonoBehaviour
         GetComponent<Rigidbody2D>().linearVelocity = new Vector2(vx, vy);
 
         // 총알 발사
-        if(Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1"))
         {
             // 총알 방향
             Vector2 bulletV = new Vector2(10, 0);
 
             // 방향 변경
-            if(GetComponent<SpriteRenderer>().flipX)
+            if (GetComponent<SpriteRenderer>().flipX)
             {
                 bulletV.x = -bulletV.x;
             }
@@ -188,14 +190,3 @@ public class PlayerController : MonoBehaviour
         GameMangerController.Instance.Die();
     }
 }
-
-//if (vx > 0) // 오른쪽으로 이동
-//{
-//    // 오른쪽을 바라보게 하기 위해 x 스케일을 1로 설정
-//    transform.localScale = new Vector2(1, 1);
-//}
-//else if (vx < 0) // 왼쪽으로 이동
-//{
-//    // 왼쪽을 바라보게 하기 위해 x 스케일을 -1로 설정
-//    transform.localScale = new Vector2(-1, 1);
-//}
