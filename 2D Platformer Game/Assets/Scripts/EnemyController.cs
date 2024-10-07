@@ -46,10 +46,10 @@ public class EnemyController : MonoBehaviour
             GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 10), ForceMode2D.Impulse);
             GetComponent<BoxCollider2D>().enabled = false;
 
-            Invoke("OnDestroy",2f);
+            Invoke("DestroyThis", 2f);
         }
     }
-    private void OnDestroy()
+    void DestroyThis()
     {
         Destroy(gameObject);
     }

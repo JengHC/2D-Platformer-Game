@@ -6,6 +6,7 @@ public class GameMangerController : MonoBehaviour
 {
     public GameObject CinemachineInstance;
     public PlayerController Player;
+    public ObjectPool BulletPool;
 
     [SerializeField]
     private GameObject popupCanvas;
@@ -54,6 +55,13 @@ public class GameMangerController : MonoBehaviour
     {
         TimeLimit -= Time.deltaTime;
         TimeLimitLabel.text = "Time Left: " + ((int)TimeLimit);
+
+        // 시간이 다 되면 게임 오버
+        // +(추가해볼것) 목숨이 하나 깎이고, 시간이 다시 30초 늘어난다.
+        if (TimeLimit <= 0)
+        {
+            GameOver();
+        }
     }
 
     public void AddTime(float time)
@@ -73,11 +81,12 @@ public class GameMangerController : MonoBehaviour
 
     void Restart()
     {
-        if(life>0)
+        if (life > 0)
         {
             CinemachineInstance.SetActive(true);
             Player.Restart();
         }
+        
         else 
         {
             GameOver();

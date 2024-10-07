@@ -61,6 +61,9 @@ public class PlayerController : MonoBehaviour
         vx = Input.GetAxisRaw("Horizontal") * Speed;
         float vy = GetComponent<Rigidbody2D>().linearVelocityY;
 
+        // 땅에 닿아있는지 체크
+        grounded = BottomCollider.IsTouching(TerrainCollider);
+
         //------캐릭터 왼쪽,오른쪽 벽 확인------
         onWall = LeftWallCollider.IsTouching(TerrainCollider) || RightWallCollider.IsTouching(TerrainCollider);
 
@@ -72,7 +75,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetButtonDown("Jump"))
             {
                 wallJumping = true;     // 벽 점프 중
-                vy = JumpSpeed;         // 점프시 세로 속도 설정
+                vy = JumpSpeed;         // 점프 시 세로 속도 설정
 
                 // 벽에서 반대 방향으로 점프
                 if (LeftWallCollider.IsTouching(TerrainCollider))
@@ -83,13 +86,9 @@ public class PlayerController : MonoBehaviour
                 {
                     vx = -WallJumpSpeed; // 왼쪽으로 점프
                 }
+
+                Invoke("StopWallJump", 0.3f); // 일정 시간 후 벽 점프 종료
             }
-        }
-        // 벽 점프 후 일정 시간 동안 벽에 다시 붙지 않도록 설정
-        if (wallJumping)
-        {
-            // 일정 시간 후 다시 벽에 붙을 수 있게끔 설정
-            Invoke("StopWallJump", 0.3f);
         }
         //-------윗부분 벽타기 추가
 
@@ -104,59 +103,36 @@ public class PlayerController : MonoBehaviour
         }
 
         // 애니메이션 처리
-        if (BottomCollider.IsTouching(TerrainCollider)) // 지금 바닥에 붙어있었습니다.
+        if (grounded)  // 땅에 닿아있을 때
         {
-            //-----벽타기-----
-            grounded = true;
-            wallJumping = false;
-            //-----벽타기-----
-
-            if (!grounded)          // 지금은 땅에 붙었는데, 아까는 안붙어있었음
+            if (!wallJumping)
             {
-                if (vx == 0)           // 가로방향으로 멈춘 상태에서 착지
-                {                 
+                GetComponent<Animator>().ResetTrigger("Fall");
+                GetComponent<Animator>().ResetTrigger("Jump");
+
+                if (vx == 0)
+                {
                     GetComponent<Animator>().SetTrigger("Idle");
                 }
-                else                // 가로방향으로 이동하면서 착지
+                else
                 {
                     GetComponent<Animator>().SetTrigger("Run");
                 }
             }
-            else
-            {                       // 땅에 계속 붙어있었음.
-                if (vx != preVx)
-                {
-                    if (vx == 0)    // 멈춰있음
-                    {
-                        GetComponent<Animator>().SetTrigger("Idle");
-                    }
-                    else            // 달리기 시작
-                    {
-                        GetComponent<Animator>().SetTrigger("Run");
-                    }
-                }
-            }
         }
-        else
+        else  // 공중에 있을 때
         {
-            //----- 벽타기 추가
-            grounded = false;
-            //------
-            if (grounded)            // 지금은 땅에 안붙어있지만, 아까는 붙어있었음.
+            if (vy > 0)  // 위로 올라가는 중이면 Jump 애니메이션
             {
                 GetComponent<Animator>().SetTrigger("Jump");
+                GetComponent<Animator>().ResetTrigger("Fall");
             }
-            if (vy < 0)
+            else if (vy < 0)  // 아래로 내려가는 중이면 Fall 애니메이션
             {
-                // vy값은 jumpspeed 값이니까, jump스피드가 -로 내려가면 Fall 애니메이션 동작
                 GetComponent<Animator>().SetTrigger("Fall");
+                GetComponent<Animator>().ResetTrigger("Jump");
             }
         }
-
-        //위에 grounded는 현재와 아까 상태를 비교하는 것
-
-        // 점프 구현 (땅에 붙어 있을 때 점프)
-        grounded = BottomCollider.IsTouching(TerrainCollider); // 
 
         // 윗 키 누르면 점프 속도 업
         if (Input.GetButtonDown("Jump") && grounded)
@@ -167,19 +143,22 @@ public class PlayerController : MonoBehaviour
                 vy = BoostedJumpSpeed;
             }
         }
-        preVx = vx;             // 이전 속도
 
         GetComponent<Rigidbody2D>().linearVelocity = new Vector2(vx, vy);
 
+        // 총알 발사
         if(Input.GetButtonDown("Fire1"))
         {
+            // 총알 방향
             Vector2 bulletV = new Vector2(10, 0);
 
+            // 방향 변경
             if(GetComponent<SpriteRenderer>().flipX)
             {
                 bulletV.x = -bulletV.x;
             }
-            GameObject bullet = Instantiate(BulletPrefab);
+
+            GameObject bullet = GameMangerController.Instance.BulletPool.GetObject();
             bullet.transform.position = transform.position;
             bullet.GetComponent<Bullet>().Velocity = bulletV;
         }
