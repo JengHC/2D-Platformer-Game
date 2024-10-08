@@ -10,6 +10,10 @@ public class EnemyController : MonoBehaviour
 
     Vector2 vx;
 
+    //private void Awake()
+    //{
+    //    TerrainCollider = GameObject.FindGameObjectsWithTag("Terrain").GetComponent<CompositeCollider2D>();
+    //}
 
     void Start()
     {
