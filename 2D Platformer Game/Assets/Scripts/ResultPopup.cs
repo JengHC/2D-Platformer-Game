@@ -108,7 +108,10 @@ public class ResultPopup : MonoBehaviour
     public void QuitPressed()
     {
         Time.timeScale = 1;
-        Application.Quit();
+        //Application.Quit();
+        SceneManager.LoadScene("LevelSelect");
+
+
         // PlayerPrefs에 저장된 스코어들을 Quit버튼 누르면 삭제
         PlayerPrefs.DeleteAll();
     }

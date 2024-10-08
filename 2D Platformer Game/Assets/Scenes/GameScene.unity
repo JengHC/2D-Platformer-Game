@@ -2226,7 +2226,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Quit
+  m_text: Return
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 96dd160f439a7a142adea6678404ee40, type: 2}
   m_sharedMaterial: {fileID: 5360207648724417148, guid: 96dd160f439a7a142adea6678404ee40, type: 2}
