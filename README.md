@@ -3,7 +3,7 @@
 ![2D-Platformer-Game-day3](https://github.com/user-attachments/assets/d716b809-d70e-41c1-a2fc-24976c6bff0a)
 
 
-## LikeLion BootCamp[https://likelion.net/school] Mini Game
+## [LikeLion BootCamp](https://likelion.net/school) Mini Game
 ### 기능 구현
 - **캐릭터**
   - 캐릭터 기본 이동(상,하,좌,우,점프)
@@ -26,6 +26,4 @@
   - 총알 공격 기능  
 
 
-### 미니 프로젝트 진행하면서 작성한 블로그
-
-[https://velog.io/@cheorii/930-2D-Platfomer%EA%B2%8C%EC%9E%84-%EC%A0%9C%EC%9E%911]
+### [미니 프로젝트 진행하면서 작성한 블로그](https://velog.io/@cheorii/930-2D-Platfomer%EA%B2%8C%EC%9E%84-%EC%A0%9C%EC%9E%911)
