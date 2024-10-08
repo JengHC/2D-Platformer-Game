@@ -3,7 +3,7 @@
 ![2D-Platformer-Game-day3](https://github.com/user-attachments/assets/d716b809-d70e-41c1-a2fc-24976c6bff0a)
 
 
-## LikeLion BootCamp Mini Game
+## LikeLion BootCamp[https://likelion.net/school] Mini Game
 ### 기능 구현
 - **캐릭터**
   - 캐릭터 기본 이동(상,하,좌,우,점프)
