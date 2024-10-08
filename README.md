@@ -27,4 +27,4 @@
 
 ##
 
-### [미니 프로젝트 진행하면서 작성한 블로그](https://velog.io/@cheorii/930-2D-Platfomer%EA%B2%8C%EC%9E%84-%EC%A0%9C%EC%9E%911)
+### <span style="background-color:#fff5b1">[미니 프로젝트 진행하면서 작성한 블로그](https://velog.io/@cheorii/930-2D-Platfomer%EA%B2%8C%EC%9E%84-%EC%A0%9C%EC%9E%911)</span>
